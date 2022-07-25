@@ -14,7 +14,8 @@ print(new_list)
 new_list = [f for f in fruits if "a" in f]
 print(new_list)
 
-# List comprehensions syntax: list = [expression for item in iterable if condition]
+# List comprehensions syntax:
+#   list = [expression for item in iterable if condition]
 
 # Examples
 new_list = [f for f in fruits if f != "apple"]
