@@ -1,2 +1,5 @@
+# Gitignore
+*.gitignore
+
 # Visual Studio Code dir settings
 *.vscode
