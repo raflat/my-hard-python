@@ -1,6 +1,6 @@
 """For and While loops"""
 
-# "hile
+# While
 condition = True
 
 while condition:
