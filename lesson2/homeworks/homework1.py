@@ -2,11 +2,12 @@
     Dichiarare due liste di numeri con cinque elementi ciascuna
     e creare una lista concatenata che le includa entrambe.
 
-    BONUS: prendere gli elementi delle due liste dall'utente chiedendoli uno per uno.
+    BONUS: prendere gli elementi delle due liste dall'utente
+    chiedendoli uno per uno.
 """
 
 LENGTH = 5
-list1 =  [None] * LENGTH
+list1 = [None] * LENGTH
 list2 = [None] * LENGTH
 
 print('Insert elements of first list: ')
