@@ -1,16 +1,16 @@
-'''Introduzione a Python'''
+'''Introduction to Python'''
 
-#Print
+# Print function
 print("Hello World!")
 print("__________________________")
 print("")
 print("")
 
-#Variabili
+# Variables
 a = 5
 print(a)
 
-#Operatori
+# Math Operators
 a += 10
 print(a)
 
@@ -31,7 +31,7 @@ print(c)
 c = a ** b
 print(c)
 
-#Tipi
+# Types
 print(type(a))
 print(type(b))
 
@@ -66,12 +66,12 @@ f = 10
 g = f == 10
 print(g)
 
-#Len
+# Length function
 print(len(c))
 print(len(d))
 print(len(e))
 
-#If
+# If statement
 if a or b:
     print("ramo vero riga 1")
     print("ramo vero riga 1")
@@ -81,7 +81,7 @@ if a or b:
 else:
     print("ramo falso riga 1")
 
-#Input da tastiera
+# User input from keyboard
 a = input("Dammi un dato: ")
 print(a)
 
