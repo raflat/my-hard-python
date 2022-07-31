@@ -1,6 +1,6 @@
 """Lists and Dictionaries"""
 
-#lists
+# Lists
 DOUBLE_NEWLINE = '\n\n'
 
 numbers = [1, 2, 3]
@@ -20,7 +20,7 @@ while i < len(generic_list):
     print(generic_list[i])
     i += 1
 
-#dictionaries
+# Dictionaries
 dictionary = {"name": "Dario", "nickname": "raflat"}
 
 print()
