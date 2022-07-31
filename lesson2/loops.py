@@ -1,6 +1,6 @@
 """For and While loops"""
 
-#while
+# "hile
 condition = True
 
 while condition:
@@ -16,7 +16,7 @@ while count < 10:
 
 print()
 
-#for
+# For
 numbers = [1, 2, 3]
 
 for number in numbers:
