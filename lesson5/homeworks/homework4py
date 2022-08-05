@@ -1,0 +1,72 @@
+import json
+import requests
+import datetime
+from os.path import dirname, join
+
+
+def absolute_path(relative_path):
+    current_dir = dirname(dirname(__file__))
+
+    return join(current_dir, relative_path)
+
+
+def build_url(latitude, longitude):
+    url = "https://api.open-meteo.com/v1/forecast?"
+    url += "latitude=" + latitude + "&longitude=" + longitude
+    url += "&hourly=temperature_2m,apparent_temperature"
+    url += "&timezone=Europe/Rome"
+    url += "&start_date=2022-08-05&end_date=2022-08-05"
+
+    return url
+
+
+def current_temps(province):
+    latitude, longitude = coordinates(province)
+    url = build_url(latitude, longitude)
+
+    return get_temperatures(url)
+
+
+def coordinates(province):
+    with open(absolute_path(r"data\province.json"), "r") as provinces:
+        province_data = json.load(provinces)[province]
+        latitude = province_data["lat"]
+        longitude = province_data["lon"]
+
+    return latitude, longitude
+
+
+def input_province():
+    province = input("Province: ").lower().capitalize()
+
+    with open(absolute_path(r"data\province.json"), "r") as provinces:
+        if province not in json.load(provinces):
+            raise ValueError("ValueError: province \"" +
+                             province + "\" not found.")
+
+    return province
+
+
+def get_temperatures(url):
+    current_hour = int(datetime.datetime.now().strftime("%H"))
+
+    wether_data = requests.get(url).json()["hourly"]
+    measured_temperature = wether_data["temperature_2m"][current_hour]
+    apparent_temperature = wether_data["apparent_temperature"][current_hour]
+
+    return measured_temperature, apparent_temperature
+
+
+def main():
+    try:
+        PROVINCE = input_province()
+    except ValueError as e:
+        print(e)
+
+    measured_temperature, apparent_temperature = current_temps(PROVINCE)
+    print("Measured temperature:", measured_temperature)
+    print("Apparent temperature:", apparent_temperature)
+
+
+if __name__ == "__main__":
+    main()
