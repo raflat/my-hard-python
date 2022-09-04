@@ -1,26 +1,26 @@
 import wikipediaapi
 
+YEARS = [str(year) for year in range(1992, 2022)]
+MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-def main(): 
 
-	wiki = wikipediaapi.Wikipedia('en')
-	
-	# generate pages to scrape
-	months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-	
-	years = [x for x in range(1992, 2022)]
-	
-	# list of all pages
-	pages_names = []
-	
-	for year in years:
-	  for month in months:
-	   pages_names.append('Deaths_in_'+month+"_"+str(year))
+def main():
+	wiki = wikipediaapi.Wikipedia("en")
+
+	pages = generate_page_titles(years, months)
 
 	page = wiki.page(pages_names[0])
-	#print(page.text)
 	parse_page(page.text, month, year)
 
+
+def generate_page_titles():
+	titles = []
+
+	for year in YEARS:
+		for month in MONTHS:
+			titles.append("Deaths_in_" + month + "_" + year)
+
+	return titles
 
 
 # Checks if the pages in a list exists
@@ -49,14 +49,14 @@ def parse_page(text, month, year):
 			day += 1
 			parsing_day = True
   # until we find the n2, parse the line
-		elif line != "" and not line.startswith("=") and parsing_day:	
-			day_to_deaths[day-1].append(parse_line(line))	
+		elif line != "" and not line.startswith("=") and parsing_day:
+			day_to_deaths[day-1].append(parse_line(line))
 
 	print(day_to_deaths)
 	# proceed for all days untile end doc
 
 def parse_line(line):
-	return {"name": }
+	return {"name":}
 
 if __name__ == "__main__":
     main()
